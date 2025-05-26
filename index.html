@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Latent Action Learning Requires Supervision in the Presence of Distractors.">
+  <meta name="keywords" content="LAM, Latent action model, Imitation Learning, Reinfrocement Learning">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Latent Action Learning Requires Supervision in the Presence of Distractors</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+    </script>
+</head>
+<body>
+
+<!-- <nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://keunhong.com">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://hypernerf.github.io">
+            HyperNeRF
+          </a>
+          <a class="navbar-item" href="https://nerfies.github.io">
+            Nerfies
+          </a>
+          <a class="navbar-item" href="https://latentfusion.github.io">
+            LatentFusion
+          </a>
+          <a class="navbar-item" href="https://photoshape.github.io">
+            PhotoShape
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav> -->
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Latent Action Learning Requires Supervision in the Presence of Distractors
+          </h1>
+          <div class="subtitle is-8">
+            <b>ICML 2025</b>
+          </div>
+          
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="">Alexander Nikulin</a><sup>1,2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="">Ilya Zisman</a><sup>1,3</sup>,
+            </span>
+            <span class="author-block">
+              <a href="">Denis Tarasov</a><sup>1,6</sup>,
+            </span>
+            <span class="author-block">
+              <a href="">Nikita Lyubaykin</a><sup>1,4</sup>,
+            </span>
+            <span class="author-block">
+              <a href="">Andrei Polubarov</a><sup>1,3</sup>,
+            </span>
+            <span class="author-block">
+              <a href="">Igor Kiselev</a><sup>5</sup>,
+            </span>
+            <span class="author-block">
+              <a href="">Vladislav Kurenkov</a><sup>1,4</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>AIRI,</span>
+            <span class="author-block"><sup>2</sup>MIPT,</span>
+            <span class="author-block"><sup>3</sup>Skoltech,</span>
+            <span class="author-block"><sup>4</sup>Innopolis University,</span>
+            <span class="author-block"><sup>5</sup>Accenture,</span>
+            <span class="author-block"><sup>6</sup>ETH Zurich</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2502.00379"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2502.00379"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/dunnolab/laom"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>            
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3 has-text-centered">TL;DR</h2>
+            <div class="content has-text-justified">
+              <!-- Using LAPO as a base method,  -->
+                <p>
+                  Despite the great promise, existing latent action learning approaches use distractor-free data, 
+                  where changes between observations are primarily explained by real actions. Unfortunately, 
+                  real-world videos encompass many activities that are unrelated to the task and cannot be 
+                  controlled by the agent. We study how action-correlated distractors 
+                  (dynamic backgrounds, camera shake, color changes, etc) affect latent action learning and show that:  
+                  <ul>
+                    <li>Latent action learning <b>fails to recover useful latent actions when distractors are present</b>. </li>
+                    <li>With simple modifications (multi-step IDM, no quantization, latent-space FDM, augmentations) 
+                      we can improve latent actions quality by <b>2x</b>. </li>
+                    <li>But <b>architectural changes alone are not enough</b>. 
+                      Without supervision, Latent Action Models (LAMs) cannot distinguish control-related motion from distractors.</li>
+                    <li>Supervision with as little as <b>2.5%</b> (of full dataset) ground-truth actions during
+                       latent action model pre-training boosts downstream performance by <b>4x</b>.  </li>
+                  </ul>
+                </p>
+                Our findings highlight a major limitation of existing latent action learning methods.
+            </div>
+          </div>        
+        </div>
+
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column">
+            <figure>
+              <img src="./static/images/final_result_comb.jpg">
+              <figcaption class="has-text-centered">Latent action learning with supervision outperforms baselines across multiple environments and ground-truth action budgets.</figcaption>
+            </figure>
+          </div>
+        </div>        
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+        <div class="column is-centered">
+          <div class="content">
+            <h2 class="title is-3">Improving Quality</h2>    
+            <p>
+              The individual effect of each proposed change in LAOM, our modification of LAPO, 
+              which overall improves latent action quality in the presence of distractors by 8x, 
+              almost closing the gap with distractor-free setting. 
+            </p>
+            <figure>
+              <img src="./static/images/lapo_improvements.jpg" height="auto" width="auto">
+            </figure>
+          </div>
+        </div>  
+      
+        <div class="column is-centered">
+          <div class="content">
+            <h2 class="title is-3">Supervision is Necessary</h2> 
+            <p>Our improvements partially transfer to downstream performance, as LAOM outperforms vanilla LAPO,
+              improving performance by up to 2x. However, there remains a large gap in final performance 
+              with and without distractors.</p>
+            <br>
+            <figure>
+                <img src="./static/images/lapo_vanilla_vs.jpg" height="auto" width="auto">
+            </figure> 
+          </div>
+        </div>
+    </div>
+
+    <div class="content">
+      <h2 class="title is-2">Method</h2>
+      <p>Simplified architecture visualization of LAPO, and LAOM - our proposed modification. LAPO consists of IDM and FMD, both
+        with separate encoders, uses latent action quantization and predict next observation in image space. LAOM
+        incorporates multi-step IDM, removes quantization and does not reconstruct images, relying on latent temporal consistency loss. Images
+        are encoded by shared encoder, while IDM and FDM operate in compact latent space. When small number of ground-truth action labels is
+        available, we use them for supervision, linearly predicting from latent actions.
+      </p>
+      <figure>
+        <img src="./static/images/lapo-arc-comb.jpg">
+      </figure>
+    </div>
+
+    <br>
+    <div class="columns is-centered">
+        <div class="column is-centered">
+          <div class="content">
+            <h2 class="title is-2">Training Pipeline</h2> 
+            <p>Latent Action Model (LAM) is pre-trained to infer latent actions. 
+                It is then used to relabel the entire dataset with latent actions, which 
+                are subsequently used for behavioral cloning. Finally, a decoder is trained 
+                to map from latent to true actions. <b>We do not modify this pipeline</b>; we only examine the LAM architecture itself.
+          </p>   
+            <figure>
+              <img src="./static/images/lapo-pipeline.jpg" height="auto" width="auto">
+            </figure>
+            
+          </div>
+        </div>  
+      
+        <div class="column is-centered">
+          <div class="content">
+              <h2 class="title is-2">Environments</h2> 
+              <p>
+                We collect datasets using Distracting Control Suite (DCS). DCS uses 
+                dynamic background videos, camera shaking and agent color change as distractors. 
+                We collect datasets with five thousand trajectories for four tasks.
+              </p>
+              <figure>
+                <img src="./static/images/envs-vis.png" height="auto" width="auto">
+            </figure> 
+          </div>
+        </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-2">Citation</h2>
+      <pre><code>
+@article{nikulin2025latent,
+  title={Latent Action Learning Requires Supervision in the Presence of Distractors},
+  author={Nikulin, Alexander and Zisman, Ilya and Tarasov, Denis and Lyubaykin, Nikita and Polubarov, Andrei and Kiselev, Igor and Kurenkov, Vladislav},
+  journal={arXiv preprint arXiv:2502.00379},
+  year={2025}
+}
+    </code></pre>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            Borrowed from <a href="https://github.com/nerfies/nerfies.github.io">nerfies</a> template.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
